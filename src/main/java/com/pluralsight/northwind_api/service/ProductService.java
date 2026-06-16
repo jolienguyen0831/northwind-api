@@ -34,7 +34,7 @@ public class ProductService {
     public List<Product> getProductByCategoryID(int categoryID){
         return productRepository.findByCategoryID(categoryID);
     }
-    public List<Product> getProductByProductNamerContainingIgnoreCase(String productName){
+    public List<Product> getProductByProductNameContainingIgnoreCase(String productName){
         return productRepository.findByProductNameContainingIgnoreCase(productName);
     }
 
