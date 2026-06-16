@@ -11,23 +11,32 @@ public class Product {
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int productID;
 
+        @Column(name = "ProductName")
         private String productName;
-        private int supplierID;
-        private int categoryID;
+
+        @Column(name = "SupplierID")
+        private Integer supplierID;
+
+        @Column (name = "CategoryID")
+        private Integer categoryID;
+
+        @Column(name = "QuantityPerUnit")
         private String quantityPerUnit;
-        private double unitPrice;
-        private int unitsInStock;
-        private int unitsOnOrder;
-        private int reorderLevel;
-        private byte discontinued;
 
-        public byte getDiscontinued() {
-            return discontinued;
-        }
+        @Column(name = "UnitPrice")
+        private Double unitPrice;
 
-        public void setDiscontinued(byte discontinued) {
-            this.discontinued = discontinued;
-        }
+        @Column(name="UnitsInStock")
+        private Integer unitsInStock;
+
+        @Column(name="UnitsOnOrder")
+        private Integer unitsOnOrder;
+
+        @Column(name="ReorderLevel")
+        private Integer reorderLevel;
+
+        @Column(name="Discontinued")
+        private Byte discontinued;
 
         public int getProductID() {
             return productID;
@@ -45,19 +54,19 @@ public class Product {
             this.productName = productName;
         }
 
-        public int getSupplierID() {
+        public Integer getSupplierID() {
             return supplierID;
         }
 
-        public void setSupplierID(int supplierID) {
+        public void setSupplierID(Integer supplierID) {
             this.supplierID = supplierID;
         }
 
-        public int getCategoryID() {
+        public Integer getCategoryID() {
             return categoryID;
         }
 
-        public void setCategoryID(int categoryID) {
+        public void setCategoryID(Integer categoryID) {
             this.categoryID = categoryID;
         }
 
@@ -69,36 +78,44 @@ public class Product {
             this.quantityPerUnit = quantityPerUnit;
         }
 
-        public double getUnitPrice() {
+        public Double getUnitPrice() {
             return unitPrice;
         }
 
-        public void setUnitPrice(double unitPrice) {
+        public void setUnitPrice(Double unitPrice) {
             this.unitPrice = unitPrice;
         }
 
-        public int getUnitsInStock() {
+        public Integer getUnitsInStock() {
             return unitsInStock;
         }
 
-        public void setUnitsInStock(int unitsInStock) {
+        public void setUnitsInStock(Integer unitsInStock) {
             this.unitsInStock = unitsInStock;
         }
 
-        public int getUnitsOnOrder() {
+        public Integer getUnitsOnOrder() {
             return unitsOnOrder;
         }
 
-        public void setUnitsOnOrder(int unitsOnOrder) {
+        public void setUnitsOnOrder(Integer unitsOnOrder) {
             this.unitsOnOrder = unitsOnOrder;
         }
 
-        public int getReorderLevel() {
+        public Integer getReorderLevel() {
             return reorderLevel;
         }
 
-        public void setReorderLevel(int reorderLevel) {
+        public void setReorderLevel(Integer reorderLevel) {
             this.reorderLevel = reorderLevel;
+        }
+
+        public Byte getDiscontinued() {
+            return discontinued;
+        }
+
+        public void setDiscontinued(Byte discontinued) {
+            this.discontinued = discontinued;
         }
     }
 
