@@ -1,7 +1,6 @@
 package com.pluralsight.northwind_api.service;
 
 import com.pluralsight.northwind_api.model.Category;
-import com.pluralsight.northwind_api.model.Product;
 import com.pluralsight.northwind_api.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +28,12 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
-    public void deleteCategory(Integer id) {
+    public boolean deleteCategory(int id) {
+        if (!categoryRepository.existsById(id)) {
+            return false;
+        }
         categoryRepository.deleteById(id);
+        return true;
     }
 
     public List<Category> getCategoryByDescription(String description){

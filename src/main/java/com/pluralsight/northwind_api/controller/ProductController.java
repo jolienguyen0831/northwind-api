@@ -39,6 +39,21 @@ public class ProductController {
         return productService.createProduct(product);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product product) {
+        Optional<Product> updated = productService.updateProduct(id, product);
+        return updated.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id) {
+        boolean deleted = productService.deleteProduct(id);
+        return deleted
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
+    }
+
+
 
 
 }

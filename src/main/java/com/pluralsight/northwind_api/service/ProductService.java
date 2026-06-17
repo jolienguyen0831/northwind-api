@@ -26,10 +26,13 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteProduct(Integer id) {
+    public boolean deleteProduct(int id) {
+        if (!productRepository.existsById(id)) {
+            return false;
+        }
         productRepository.deleteById(id);
+        return true;
     }
-
 
     public List<Product> getProductByCategoryID(int categoryID){
         return productRepository.findByCategoryID(categoryID);
@@ -39,6 +42,13 @@ public class ProductService {
     }
     public List<Product> getAllProducts() {
         return productRepository.findAllWithCategory();
+    }
+    public Optional<Product> updateProduct(int id, Product product) {
+        if (!productRepository.existsById(id)) {
+            return Optional.empty();
+        }
+        product.setProductID(id);
+        return Optional.of(productRepository.save(product));
     }
 
 
