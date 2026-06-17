@@ -1,10 +1,16 @@
 package com.pluralsight.northwind_api.model;
 
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Products")
+@JsonPropertyOrder({
+        "productID", "productName", "category", "categoryID",
+        "unitPrice", "unitsInStock", "unitsOnOrder",
+        "reorderLevel", "discontinued", "quantityPerUnit", "supplierID"
+})
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +23,14 @@ public class Product {
     @Column(name = "SupplierID")
     private Integer supplierID;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CategoryID", insertable = false, updatable = false)
+    private Category category;
+
+
     @Column(name = "CategoryID")
     private Integer categoryID;
+
 
     @Column(name = "QuantityPerUnit")
     private String quantityPerUnit;
@@ -116,6 +128,14 @@ public class Product {
 
     public void setDiscontinued(Byte discontinued) {
         this.discontinued = discontinued;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
 

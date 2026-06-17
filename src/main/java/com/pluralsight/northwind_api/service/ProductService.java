@@ -14,9 +14,9 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
+//    public List<Product> getAllProducts() {
+//        return productRepository.findAll();
+//    }
 
     public Optional<Product> getProductById(Integer id) {
         return productRepository.findById(id);
@@ -36,6 +36,9 @@ public class ProductService {
     }
     public List<Product> getProductByProductNameContainingIgnoreCase(String productName){
         return productRepository.findByProductNameContainingIgnoreCase(productName);
+    }
+    public List<Product> getAllProducts() {
+        return productRepository.findAllWithCategory();
     }
 
 
