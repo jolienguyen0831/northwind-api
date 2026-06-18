@@ -2,6 +2,7 @@ package com.pluralsight.northwind_api.controller;
 
 import com.pluralsight.northwind_api.model.Product;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.pluralsight.northwind_api.service.ProductService;
 
@@ -46,6 +47,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteProduct(@PathVariable int id) {
         boolean deleted = productService.deleteProduct(id);
         return deleted
